@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ExtendedDefinePlugin = require('extended-define-webpack-plugin');
-var appConfig = require('./config.prod');
+var appConfig = require('./config.dev');
 
 loaders.push({
   test: /\.scss$/,
