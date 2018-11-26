@@ -33,6 +33,9 @@ module.exports = {
   module: {
     loaders
   },
+  node: {
+    fs: 'empty'
+  },
   devServer: {
     contentBase: "../public",
     // do not print bundle build stats

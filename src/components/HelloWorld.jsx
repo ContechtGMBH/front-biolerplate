@@ -1,10 +1,29 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
+import io from 'socket.io-client';
 import {testAction} from '../actions/index';
 
+import TestService from '../services/testService'
+
 class HelloWorld extends Component {
+
+  componentDidMount(){
+
+    this.api = new TestService();
+
+    this.testing();
+
+  }
+
+  async testing() {
+
+    const u = await this.api.getSomething();
+
+    console.log(u)
+
+  }
+
   render() {
     return (
       <div>
