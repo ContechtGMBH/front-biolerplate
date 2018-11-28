@@ -1,7 +1,7 @@
 {
   "name": "front-boilerplate",
   "version": "0.0.1",
-  "description": "React+Redux+Webpack+Babel Starter Pack",
+  "description": "React+Redux Boilerplate",
   "main": "''",
   "scripts": {
     "build-prod": "webpack --config config/webpack.production.config.js --progress --profile --colors",
@@ -23,6 +23,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
+    "redux-form": "^7.4.2",
     "sass-loader": "^6.0.2",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
