@@ -15,7 +15,6 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 )
 
 const LoginForm = props => {
-  console.log(props)
   const { error, handleSubmit, submitting, pristine, valid } = props
 
   return (

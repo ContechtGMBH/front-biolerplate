@@ -71,5 +71,67 @@ export default class ClientApi {
 
   }
 
+  graphql(endpoint, data = {}, options = this.defaultOptions ) {
+
+    const url = this.apiUrl + endpoint;
+
+    const form = new FormData();
+
+    const query = data.query;
+    const initialVariables = data.variables || {};
+    const variables = {};
+    const map = {};
+    const files = {};
+
+    let ind = 0;
+
+    Object.entries(initialVariables).forEach(
+      ([key, value]) => {
+
+        if (value instanceof File) {
+
+          variables[key] = null;
+
+          map[ind.toString()] = [`variables.${key}`];
+
+          files[ind] = value;
+
+          ind++;
+
+        } else {
+
+          variables[key] = value;
+
+        }
+      }
+    );
+
+    const operations = {
+      query: query,
+      variables: variables,
+    };
+
+    form.append('operations', JSON.stringify(operations));
+    form.append('map', JSON.stringify(map));
+
+    Object.entries(files).forEach(
+      ([key, value]) => {
+
+        form.append(key, value);
+
+    });
+
+    return fetch( url, {
+
+      method: 'POST',
+      headers: options.headers,
+      body: form,
+      credentials: (options.credentials) ? 'include' : 'same-origin'
+
+    })
+    .then( response => response );
+
+  }
+
 
 }

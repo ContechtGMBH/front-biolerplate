@@ -14,13 +14,19 @@ class HelloWorld extends Component {
 
     this.api = new TestService();
 
-    this.testing();
+    //this.testing();
 
   }
 
   async testing() {
 
-    const u = await this.api.getSomething();
+    const data = {
+      query: 'mutation uploadFile($file: Upload){ uploadFile(file: $file){ success } }',
+      variables: {
+        file:  new File([1,2,3], "file.txt"),
+      }
+    }
+    const u = await this.api.callGraphql(data);
 
     console.log(u)
 

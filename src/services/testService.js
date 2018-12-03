@@ -8,7 +8,7 @@
 *
 *   getSomething() {
 *
-*     return this.clientApi.get('/api/v1/getreq')
+*     return this.http.get('/api/v1/getreq')
 *       .then( data => data.json() )
 *       .catch( err => { error: true } )
 *
@@ -24,7 +24,7 @@
 *       credentials: true, // add credentials to the request even for a cross-origin call
 *     }
 *
-*     return this.clientApi.post('/api/v1/postreq', params, options).then( data => data.json())
+*     return this.http.post('/api/v1/postreq', params, options).then( data => data.json())
 *
 *   }
 *
@@ -50,7 +50,7 @@ import Services from './Services';
 
    getSomething() {
 
-     return this.clientApi.get('/api/v1/login')
+     return this.http.get('/api/v1/login')
       .then( data => data.json() )
       .catch( error => {
         return {
@@ -59,6 +59,18 @@ import Services from './Services';
         }
       })
 
+   }
+
+   callGraphql(data) {
+
+     return this.http.graphql('/api/v2/graphql', data )
+      .then(data => data.json())
+      .catch( error => {
+        return {
+          error: true,
+          message: "Something is wrong.",
+        }
+      })
    }
 
 }

@@ -8,7 +8,7 @@ export default class Services {
 
     apiUrl ? url = apiUrl : url = __API_URL__ ;
 
-    this.clientApi = new ClientApi(url);
+    this.http = new ClientApi(url);
 
   }
 
